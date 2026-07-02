@@ -62,6 +62,7 @@ from ultralytics.nn.modules import (
     RepNCSPELAN4,
     RepVGGDW,
     ResNetLayer,
+    RCC,
     RTDETRDecoder,
     SCDown,
     Segment,
@@ -1815,6 +1816,7 @@ def parse_model(d, ch, verbose=True):
         {
             Classify,
             Conv,
+            RCC,
             ConvTranspose,
             GhostConv,
             Bottleneck,
@@ -1849,6 +1851,7 @@ def parse_model(d, ch, verbose=True):
             A2C2f,
         }
     )
+    backbone_len = len(d["backbone"])
     repeat_modules = frozenset(  # modules with 'repeat' arguments
         {
             BottleneckCSP,
@@ -1884,6 +1887,8 @@ def parse_model(d, ch, verbose=True):
                 with contextlib.suppress(ValueError):
                     args[j] = locals()[a] if a in locals() else ast.literal_eval(a)
         n = n_ = max(round(n * depth), 1) if n > 1 else n  # depth gain
+        if i < backbone_len and m is Conv:
+            m = RCC
         if m in base_modules:
             c1, c2 = ch[f], args[0]
             if c2 != nc:  # if c2 != nc (e.g., Classify() output)

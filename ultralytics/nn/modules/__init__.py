@@ -76,6 +76,7 @@ from .conv import (
     RepConv,
     SpatialAttention,
 )
+from .rcc import RCC
 from .head import (
     OBB,
     OBB26,
@@ -163,6 +164,7 @@ __all__ = (
     "LRPCHead",
     "LayerNorm2d",
     "LightConv",
+    "RCC",
     "MLPBlock",
     "MSDeformAttn",
     "MaxSigmoidAttnBlock",
