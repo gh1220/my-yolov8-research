@@ -76,6 +76,7 @@ from .conv import (
     RepConv,
     SpatialAttention,
 )
+from .cfc import CFC
 from .rcc import RCC
 from .head import (
     OBB,
@@ -149,6 +150,7 @@ __all__ = (
     "Conv",
     "Conv2",
     "ConvTranspose",
+    "CFC",
     "DWConv",
     "DWConvTranspose2d",
     "DeformableTransformerDecoder",

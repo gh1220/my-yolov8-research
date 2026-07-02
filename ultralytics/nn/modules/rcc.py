@@ -42,6 +42,8 @@ class RFAConv(nn.Module):
 
     def __init__(self, c1: int, c2: int, k: int = 3, s: int = 1, p=None, g: int = 1, d: int = 1):
         super().__init__()
+        if isinstance(k, tuple):
+            k = k[0]
         pad = autopad(k, p, d)
         self.k = k
         self.unfold = nn.Unfold(kernel_size=k, dilation=d, padding=pad, stride=s)
@@ -69,6 +71,8 @@ class RCC(nn.Module):
 
     def __init__(self, c1, c2, k=1, s=1, p=None, g=1, d=1, act=True):
         super().__init__()
+        if isinstance(k, tuple):
+            k = k[0]
         self.rfa = RFAConv(c1, c2, k=k, s=s, p=p, g=g, d=d)
         self.ca = CoordAtt(c2, c2)
         self.act = self.default_act if act is True else act if isinstance(act, nn.Module) else nn.Identity()
