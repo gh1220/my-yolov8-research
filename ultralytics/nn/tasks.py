@@ -64,6 +64,7 @@ from ultralytics.nn.modules import (
     RepVGGDW,
     ResNetLayer,
     RCC,
+    SBA,
     RTDETRDecoder,
     SCDown,
     Segment,
@@ -1928,6 +1929,9 @@ def parse_model(d, ch, verbose=True):
             args = [ch[f]]
         elif m is Concat:
             c2 = sum(ch[x] for x in f)
+        elif m is SBA:
+            c2 = ch[f]
+            args = [ch[f], *args]
         elif m in frozenset(
             {
                 Detect,
@@ -1943,6 +1947,7 @@ def parse_model(d, ch, verbose=True):
                 OBB26,
             }
         ):
+            # Detect already supports an arbitrary number of feature maps, so this path also covers P2-P5 heads.
             args.extend([reg_max, end2end, [ch[x] for x in f]])
             if m is Segment or m is YOLOESegment or m is Segment26 or m is YOLOESegment26:
                 args[2] = make_divisible(min(args[2], max_channels) * width, 8)

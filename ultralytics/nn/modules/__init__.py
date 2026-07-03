@@ -78,6 +78,7 @@ from .conv import (
 )
 from .cfc import CFC
 from .rcc import RCC
+from .sba import SBA
 from .head import (
     OBB,
     OBB26,
@@ -167,6 +168,7 @@ __all__ = (
     "LayerNorm2d",
     "LightConv",
     "RCC",
+    "SBA",
     "MLPBlock",
     "MSDeformAttn",
     "MaxSigmoidAttnBlock",
