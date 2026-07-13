@@ -6,9 +6,12 @@ backbone = model.model.model
 expected_rcc_layers = [0, 1, 3, 5, 7]
 expected_cfc_layers = [2, 4, 6, 8]
 expected_sba_layers = [12, 16, 20, 24]
-actual_layers = {i: backbone[i].__class__.__name__ for i in expected_rcc_layers + expected_cfc_layers + expected_sba_layers}
+actual_layers = {
+    i: backbone[i].__class__.__name__ for i in expected_rcc_layers + expected_cfc_layers + expected_sba_layers
+}
 print(actual_layers)
 assert all(backbone[i].__class__.__name__ == "RCC" for i in expected_rcc_layers), "Backbone is not using RCC"
+
 
 def _is_cfc_stage(module):
     return module.__class__.__name__ == "CFC" or (
@@ -25,10 +28,4 @@ def _is_sba(module):
 
 assert all(_is_sba(backbone[i]) for i in expected_sba_layers), "Neck is not using SBA"
 
-model.train(
-    data="../datasets/data.yaml",
-    device="cpu",
-    imgsz=640,
-    epochs=100,
-    batch=1
-)
+model.train(data="../datasets/data.yaml", device="cpu", imgsz=640, epochs=100, batch=1)
