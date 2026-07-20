@@ -9,9 +9,9 @@ import torch.nn as nn
 class SBA(nn.Module):
     """Spatial Bi-directional Attention.
 
-    The module is channel-preserving and is designed to be inserted after neck fusion Concat operations.
-    It combines horizontal, vertical, and spatial attention so the fused feature is refined in both directions
-    while keeping the tensor shape unchanged.
+    The module is channel-preserving and is designed to be inserted after neck fusion Concat operations. It combines
+    horizontal, vertical, and spatial attention so the fused feature is refined in both directions while keeping the
+    tensor shape unchanged.
     """
 
     def __init__(self, c1: int, reduction: int = 16):
