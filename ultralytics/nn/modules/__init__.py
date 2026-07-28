@@ -60,6 +60,7 @@ from .block import (
     SCDown,
     TorchVision,
 )
+from .cfc import CFC
 from .conv import (
     CBAM,
     ChannelAttention,
@@ -76,9 +77,6 @@ from .conv import (
     RepConv,
     SpatialAttention,
 )
-from .cfc import CFC
-from .rcc import RCC
-from .sba import SBA
 from .head import (
     OBB,
     OBB26,
@@ -97,6 +95,8 @@ from .head import (
     YOLOESegment26,
     v10Detect,
 )
+from .rcc import RCC
+from .sba import SBA
 from .transformer import (
     AIFI,
     MLP,
@@ -118,6 +118,7 @@ __all__ = (
     "C3",
     "C3TR",
     "CBAM",
+    "CFC",
     "CIB",
     "DFL",
     "ELAN1",
@@ -125,6 +126,8 @@ __all__ = (
     "OBB",
     "OBB26",
     "PSA",
+    "RCC",
+    "SBA",
     "SPP",
     "SPPELAN",
     "SPPF",
@@ -151,7 +154,6 @@ __all__ = (
     "Conv",
     "Conv2",
     "ConvTranspose",
-    "CFC",
     "DWConv",
     "DWConvTranspose2d",
     "DeformableTransformerDecoder",
@@ -167,8 +169,6 @@ __all__ = (
     "LRPCHead",
     "LayerNorm2d",
     "LightConv",
-    "RCC",
-    "SBA",
     "MLPBlock",
     "MSDeformAttn",
     "MaxSigmoidAttnBlock",

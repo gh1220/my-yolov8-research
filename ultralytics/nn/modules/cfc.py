@@ -7,7 +7,7 @@ This allows it to be dropped into YOLOv8 backbones without changing tensor shape
 from __future__ import annotations
 
 import torch
-import torch.nn as nn
+from torch import nn
 
 from .conv import Conv
 from .rcc import RCC
