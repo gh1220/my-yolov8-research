@@ -7,7 +7,7 @@ The module keeps the same input/output shape contract as Conv so it can be dropp
 from __future__ import annotations
 
 import torch
-import torch.nn as nn
+from torch import nn
 
 from .conv import autopad
 
