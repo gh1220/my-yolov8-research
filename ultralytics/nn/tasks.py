@@ -8,7 +8,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import torch
-import torch.nn as nn
+from torch import nn
 
 from ultralytics.nn.autobackend import check_class_names
 from ultralytics.nn.modules import (
@@ -18,10 +18,13 @@ from ultralytics.nn.modules import (
     C2PSA,
     C3,
     C3TR,
+    CFC,
     ELAN1,
     OBB,
     OBB26,
     PSA,
+    RCC,
+    SBA,
     SPP,
     SPPELAN,
     SPPF,
@@ -44,7 +47,6 @@ from ultralytics.nn.modules import (
     Conv,
     Conv2,
     ConvTranspose,
-    CFC,
     Detect,
     DWConv,
     DWConvTranspose2d,
@@ -63,8 +65,6 @@ from ultralytics.nn.modules import (
     RepNCSPELAN4,
     RepVGGDW,
     ResNetLayer,
-    RCC,
-    SBA,
     RTDETRDecoder,
     SCDown,
     Segment,
